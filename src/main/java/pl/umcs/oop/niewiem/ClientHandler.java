@@ -19,7 +19,7 @@ public class ClientHandler implements Runnable {
     public void run() {
 
         try(BufferedReader in = new BufferedReader(
-                new InputStreamReader(clientSocket.getInputStream()))){
+                new InputStreamReader(clientSocket.getInputStream()))){//czytanie wiadomości od klienta
             String message;
             while((message = in.readLine())!= null) {
                 // Sprawdź, czy to kolor czy współrzędne
@@ -35,6 +35,7 @@ public class ClientHandler implements Runnable {
                     window.addToList(x1, y1, x2, y2, currentColor);
                     window.draw();
                 }
+                //out.println(message); - wypisuje wiadomość
             }
         } catch (IOException e) {
             e.printStackTrace();
